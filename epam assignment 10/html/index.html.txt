@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+    crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="signinform">
+            <form name="register" onsubmit="validateForm()" method="post">
+                <div class ="block1"> 
+                    <img src="C:\Users\hp\Desktop\epam assignment 10\images" style="width:39px;border-radius: 50%;float:left">
+                      <div class ="signin">SIGN UP</div>
+                </div>
+                <div class="input-group padding">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input id="name" type="text" class="form-control" name="name" placeholder="Full Name" required>
+                </div>
+                <div class="input-group padding">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                  <input id="email" type="text" class="form-control" name="email" placeholder="Email" required>
+                </div>
+                <div class="input-group padding">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input id="password1" type="password" class="form-control" name="password1" placeholder="Password" required>
+                </div>
+                <div class="input-group padding">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input id="password2" type="password" class="form-control" name="password2" placeholder="Re-Enter Password" required>
+                </div>
+                <div class="input-group padding">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                    <input id="number" type="text" class="form-control" name="number" placeholder="Enter Mobile number" required>
+                </div>
+                    <div class="input-group padding">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        <input id="date" type="text" class="form-control" name="date" placeholder="dd-mm-yyyy" required>
+                    </div>
+                <div class="padding">
+                    <button class="btn btn-primary but"><span><i class="glyphicon glyphicon-log-in"></i></span> SIGN UP</button>
+                </div>
+              </form>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function validateForm(){
+            var display="";
+            var name=document.register.name.value;
+            var email=document.register.email.value;
+            var pass1=document.register.password1.value;
+            var pass2=document.register.password2.value;
+            var number=document.register.number.value;
+            var date=document.register.date.value;
+            var rename =  /^[a-z A-Z]+$/;
+            var remail =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            var renumber= /^[0-9]{10}$/;
+            var redate =  /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+            var err="";
+            var f=0;
+            if (!name.match(rename)) {
+                f++;
+                err += "Name Error : Please Enter Your Name Properly\n"
+            }
+            if (!email.match(remail)) {
+                f++;
+                err += "E-Mail Error : Please Enter a valid Email\n";
+            }
+            if (pass1.length<9 || pass1!=pass2) {
+                f++;
+                err += "Password Error : Please enter a strong Password\n"
+            }
+            if (!number.match(renumber)) {
+                f++;
+                err += "Phone Number Error : Enter a Valid Number\n"
+            }
+            if (!date.match(redate)) {
+                f++;
+                err += "Date Error : Enter a Valid Date\n"
+            }
+            if (f!=0) {
+                window.alert(err);
+            }
+            else{
+                window.alert("Successfully Registered!");
+            }
+        }
+    </script>
+</body>
+</html>
